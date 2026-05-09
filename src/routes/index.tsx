@@ -120,14 +120,14 @@ function Index() {
 
       {/* footer */}
       <footer className="relative z-10 border-t border-foreground/10">
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-10 py-6 md:px-16">
-          <div className="flex items-center gap-6">
+        <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-4 px-10 py-6 md:flex-row md:justify-between md:px-16 md:gap-0">
+          <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
             <img src="/unikl-official.png" alt="UniKL Official" className="h-12 w-auto" />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 text-center md:text-left">
               © IIIP UniKL Royal College of Medicine
             </span>
           </div>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40">
+          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 text-center">
             Empowering Leadership · Globally
           </span>
         </div>
