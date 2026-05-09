@@ -13,17 +13,12 @@ export const Route = createFileRoute("/")({
 });
 
 const links = [
-  { id: "ACE", title: "Academic & Corporate Engagement", desc: "Strategic alliances bridging academia with leading corporations to co-create knowledge, talent pipelines and applied research." },
-  { id: "IL", title: "Industrial Linkages", desc: "Curated partnerships with industry leaders enabling internships, real-world projects and industry-driven curricula." },
-  { id: "TEKNOPUTRA", title: "Innovation & Entrepreneurship", desc: "A launchpad nurturing student innovators, technopreneurs and breakthrough ventures from concept to market." },
-  { id: "UIO", title: "University–Industry Office", desc: "The single gateway connecting industry needs with university capabilities — research, consultancy and talent." },
-  { id: "CWAL", title: "Centre for Work & Adaptive Learning", desc: "Adaptive, work-integrated learning programs preparing graduates for evolving global workplaces." },
-];
-
-const stats = [
-  { kpi: "42+", label: "Global Reach" },
-  { kpi: "300+", label: "Industry Ready" },
-  { kpi: "15K", label: "Empowering Leadership" },
+  { id: "ACE", title: "Advancement and Continuing Education", desc: "ACE dedicated to lifelong learning and professional development. ACE extends excellence to individuals and organizations, offering industry-relevant courses led by renowned academic and industry experts." },
+  { id: "IL", title: "Industrial Linkages", desc: "Engages with industry to address mutual needs. IL is the gateway for industry and university collaboration: internships, recruitment, expertise sharing, and programs that develop talents suitable for current industry needs." },
+  { id: "TEKNOPUTRA", title: "Teknoputra", desc: "Focuses on entrepreneurship development for students and alumni. It manages activities to develop new entrepreneurs with the right mindset and attributes." },
+  { id: "UIO", title: "University Industry Office", desc: "Manages and coordinates international partnerships & collaborations, exchange & mobility programmes, customised edutourism programmes, and international visits at UniKL RCMP. We are the primary liaison for UniKL's global partners." },
+  { id: "CWAL", title: "Centre For Women Advancement and Leadership", desc: "Empowers Malaysian women to attain prosperity and a higher quality of life in line with the Shared Prosperity Vision 2030." },
+  { id: "ABOUT US", title: "About us", desc: "Learn more about IIIP UniKL RCMP and our mission to empower future leaders through global, industrial and institutional partnerships." },
 ];
 
 function Index() {
@@ -37,18 +32,6 @@ function Index() {
     >
       <div className="pointer-events-none absolute inset-0" style={{ background: "var(--bokeh)" }} />
 
-      {/* top bar */}
-      <header className="relative z-20 flex items-center justify-between px-10 py-8 md:px-16">
-        <div className="text-[11px] font-medium uppercase tracking-[0.32em] text-foreground/70">
-          UniKL · RCMP
-        </div>
-        <nav className="hidden gap-10 text-[11px] font-medium uppercase tracking-[0.28em] text-foreground/60 md:flex">
-          <a href="#" className="transition hover:text-foreground">About</a>
-          <a href="#" className="transition hover:text-foreground">Programs</a>
-          <a href="#" className="transition hover:text-foreground">Contact</a>
-        </nav>
-      </header>
-
       {/* hero */}
       <section className="relative z-10 mx-auto grid max-w-[1400px] grid-cols-1 gap-16 px-10 pb-24 pt-10 md:px-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-24">
         <div className="flex flex-col justify-between">
@@ -56,13 +39,12 @@ function Index() {
             <div className="mb-6 text-[11px] font-medium uppercase tracking-[0.4em] text-foreground/50">
               International · Industrial · Institutional
             </div>
-            <h1 className="text-[clamp(3rem,7.5vw,7rem)] font-light leading-[0.95] tracking-[-0.04em] text-foreground">
-              IIIP
-              <span className="block font-extralight text-foreground/80">UniKL RCMP</span>
+            <h1 className="text-[clamp(3rem,7.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.04em] text-foreground">
+              IIIP RCMP
             </h1>
             <p className="mt-8 max-w-md text-base font-light leading-relaxed text-foreground/65">
-              A premier ecosystem of partnerships connecting students, industry and institutions —
-              shaping the next generation of globally adaptive leaders.
+              A premier ecosystem of partnerships connecting students, industry and institutions.
+              Shaping the next generation of globally adaptive leaders.
             </p>
           </div>
 
@@ -136,27 +118,18 @@ function Index() {
         </div>
       </section>
 
-      {/* footer stats */}
+      {/* footer */}
       <footer className="relative z-10 border-t border-foreground/10">
-        <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-px bg-foreground/10 px-0 md:grid-cols-3">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="flex flex-col items-start gap-3 px-10 py-12 md:px-16"
-              style={{ background: "transparent" }}
-            >
-              <div className="text-4xl font-extralight tracking-tight text-foreground md:text-5xl">
-                {s.kpi}
-              </div>
-              <div className="text-[11px] font-medium uppercase tracking-[0.3em] text-foreground/55">
-                {s.label}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-10 py-6 text-[10px] uppercase tracking-[0.3em] text-foreground/40 md:px-16">
-          <span>© IIIP UniKL RCMP</span>
-          <span>Empowering Leadership · Globally</span>
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-10 py-6 md:px-16">
+          <div className="flex items-center gap-6">
+            <img src="/unikl-official.png" alt="UniKL Official" className="h-12 w-auto" />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40">
+              © IIIP UniKL Royal College of Medicine
+            </span>
+          </div>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40">
+            Empowering Leadership · Globally
+          </span>
         </div>
       </footer>
     </main>
