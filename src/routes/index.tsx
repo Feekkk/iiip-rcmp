@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useRouter } from "@tanstack/react-router";
 import { useState } from "react";
 import heroBuilding from "@/assets/hero-building.jpg";
 
@@ -13,15 +13,16 @@ export const Route = createFileRoute("/")({
 });
 
 const links = [
-  { id: "ACE", title: "Advancement and Continuing Education", desc: "ACE dedicated to lifelong learning and professional development. ACE extends excellence to individuals and organizations, offering industry-relevant courses led by renowned academic and industry experts." },
-  { id: "IL", title: "Industrial Linkages", desc: "Engages with industry to address mutual needs. IL is the gateway for industry and university collaboration: internships, recruitment, expertise sharing, and programs that develop talents suitable for current industry needs." },
-  { id: "TEKNOPUTRA", title: "Teknoputra", desc: "Focuses on entrepreneurship development for students and alumni. It manages activities to develop new entrepreneurs with the right mindset and attributes." },
-  { id: "UIO", title: "University Industry Office", desc: "Manages and coordinates international partnerships & collaborations, exchange & mobility programmes, customised edutourism programmes, and international visits at UniKL RCMP. We are the primary liaison for UniKL's global partners." },
-  { id: "CWAL", title: "Centre For Women Advancement and Leadership", desc: "Empowers Malaysian women to attain prosperity and a higher quality of life in line with the Shared Prosperity Vision 2030." },
-  { id: "ABOUT US", title: "About us", desc: "Learn more about IIIP UniKL RCMP and our mission to empower future leaders through global, industrial and institutional partnerships." },
+  { id: "ACE", title: "Advancement and Continuing Education", desc: "ACE dedicated to lifelong learning and professional development. ACE extends excellence to individuals and organizations, offering industry-relevant courses led by renowned academic and industry experts.", href: "/ace" },
+  { id: "IL", title: "Industrial Linkages", desc: "Engages with industry to address mutual needs. IL is the gateway for industry and university collaboration: internships, recruitment, expertise sharing, and programs that develop talents suitable for current industry needs.", href: "/il" },
+  { id: "TEKNOPUTRA", title: "Teknoputra", desc: "Focuses on entrepreneurship development for students and alumni. It manages activities to develop new entrepreneurs with the right mindset and attributes.", href: "/teknoputra" },
+  { id: "UIO", title: "University Industry Office", desc: "Manages and coordinates international partnerships & collaborations, exchange & mobility programmes, customised edutourism programmes, and international visits at UniKL RCMP. We are the primary liaison for UniKL's global partners.", href: "/uio" },
+  { id: "CWAL", title: "Centre For Women Advancement and Leadership", desc: "Empowers Malaysian women to attain prosperity and a higher quality of life in line with the Shared Prosperity Vision 2030.", href: "/cwal" },
+  { id: "ABOUT US", title: "About us", desc: "Learn more about IIIP UniKL RCMP and our mission to empower future leaders through global, industrial and institutional partnerships.", href: "/about" },
 ];
 
 function Index() {
+  const router = useRouter();
   const [hover, setHover] = useState<string | null>(null);
   const active = links.find((l) => l.id === hover);
 
@@ -42,7 +43,7 @@ function Index() {
             <h1 className="text-[clamp(3rem,7.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.04em] text-foreground">
               IIIP RCMP
             </h1>
-            <p className="mt-8 max-w-md text-base font-light leading-relaxed text-foreground/65">
+            <p className="mt-8 max-w-md text-base font-bold leading-relaxed text-foreground/65">
               A premier ecosystem of partnerships connecting students, industry and institutions.
               Shaping the next generation of globally adaptive leaders.
             </p>
@@ -50,7 +51,7 @@ function Index() {
 
           <div className="mt-12 overflow-hidden rounded-[28px]" style={{ boxShadow: "var(--shadow-soft)" }}>
             <img
-              src={heroBuilding}
+              src="bgm.jpeg"
               alt="Modern university glass atrium with collaborative meeting space lit by warm sunlight"
               width={1920}
               height={1080}
@@ -69,6 +70,7 @@ function Index() {
               <li key={l.id}>
                 <button
                   onMouseEnter={() => setHover(l.id)}
+                  onClick={() => router.navigate({ to: l.href })}
                   className={`group flex w-full items-center justify-between border-b border-foreground/10 py-5 text-left transition-all duration-300 ${
                     hover === l.id ? "pl-4" : "pl-0"
                   }`}
@@ -85,7 +87,7 @@ function Index() {
                       hover === l.id ? "translate-x-0 text-foreground/70 opacity-100" : "translate-x-2 opacity-0"
                     }`}
                   >
-                    Explore →
+                    Learn More →
                   </span>
                 </button>
               </li>
@@ -123,11 +125,11 @@ function Index() {
         <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-4 px-10 py-6 md:flex-row md:justify-between md:px-16 md:gap-0">
           <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
             <img src="/unikl-official.png" alt="UniKL Official" className="h-12 w-auto" />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 text-center md:text-left">
+            <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/40 text-center md:text-left">
               © IIIP UniKL Royal College of Medicine
             </span>
           </div>
-          <span className="text-[10px] uppercase tracking-[0.3em] text-foreground/40 text-center">
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-foreground/40 text-center">
             Empowering Leadership · Globally
           </span>
         </div>

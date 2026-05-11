@@ -9,38 +9,142 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AceRouteImport } from './routes/ace'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AceSocialMediaRouteImport } from './routes/ace/SocialMedia'
+import { Route as AceOurTeamRouteImport } from './routes/ace/OurTeam'
+import { Route as AceOurServicesRouteImport } from './routes/ace/OurServices'
+import { Route as AceNewslettersRouteImport } from './routes/ace/Newsletters'
+import { Route as AceCalendarRouteImport } from './routes/ace/Calendar'
 
+const AceRoute = AceRouteImport.update({
+  id: '/ace',
+  path: '/ace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AceSocialMediaRoute = AceSocialMediaRouteImport.update({
+  id: '/SocialMedia',
+  path: '/SocialMedia',
+  getParentRoute: () => AceRoute,
+} as any)
+const AceOurTeamRoute = AceOurTeamRouteImport.update({
+  id: '/OurTeam',
+  path: '/OurTeam',
+  getParentRoute: () => AceRoute,
+} as any)
+const AceOurServicesRoute = AceOurServicesRouteImport.update({
+  id: '/OurServices',
+  path: '/OurServices',
+  getParentRoute: () => AceRoute,
+} as any)
+const AceNewslettersRoute = AceNewslettersRouteImport.update({
+  id: '/Newsletters',
+  path: '/Newsletters',
+  getParentRoute: () => AceRoute,
+} as any)
+const AceCalendarRoute = AceCalendarRouteImport.update({
+  id: '/Calendar',
+  path: '/Calendar',
+  getParentRoute: () => AceRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ace': typeof AceRouteWithChildren
+  '/ace/Calendar': typeof AceCalendarRoute
+  '/ace/Newsletters': typeof AceNewslettersRoute
+  '/ace/OurServices': typeof AceOurServicesRoute
+  '/ace/OurTeam': typeof AceOurTeamRoute
+  '/ace/SocialMedia': typeof AceSocialMediaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ace': typeof AceRouteWithChildren
+  '/ace/Calendar': typeof AceCalendarRoute
+  '/ace/Newsletters': typeof AceNewslettersRoute
+  '/ace/OurServices': typeof AceOurServicesRoute
+  '/ace/OurTeam': typeof AceOurTeamRoute
+  '/ace/SocialMedia': typeof AceSocialMediaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ace': typeof AceRouteWithChildren
+  '/ace/Calendar': typeof AceCalendarRoute
+  '/ace/Newsletters': typeof AceNewslettersRoute
+  '/ace/OurServices': typeof AceOurServicesRoute
+  '/ace/OurTeam': typeof AceOurTeamRoute
+  '/ace/SocialMedia': typeof AceSocialMediaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/ace'
+    | '/ace/Calendar'
+    | '/ace/Newsletters'
+    | '/ace/OurServices'
+    | '/ace/OurTeam'
+    | '/ace/SocialMedia'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/ace'
+    | '/ace/Calendar'
+    | '/ace/Newsletters'
+    | '/ace/OurServices'
+    | '/ace/OurTeam'
+    | '/ace/SocialMedia'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/ace'
+    | '/ace/Calendar'
+    | '/ace/Newsletters'
+    | '/ace/OurServices'
+    | '/ace/OurTeam'
+    | '/ace/SocialMedia'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AceRoute: typeof AceRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/ace': {
+      id: '/ace'
+      path: '/ace'
+      fullPath: '/ace'
+      preLoaderRoute: typeof AceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +152,66 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ace/SocialMedia': {
+      id: '/ace/SocialMedia'
+      path: '/SocialMedia'
+      fullPath: '/ace/SocialMedia'
+      preLoaderRoute: typeof AceSocialMediaRouteImport
+      parentRoute: typeof AceRoute
+    }
+    '/ace/OurTeam': {
+      id: '/ace/OurTeam'
+      path: '/OurTeam'
+      fullPath: '/ace/OurTeam'
+      preLoaderRoute: typeof AceOurTeamRouteImport
+      parentRoute: typeof AceRoute
+    }
+    '/ace/OurServices': {
+      id: '/ace/OurServices'
+      path: '/OurServices'
+      fullPath: '/ace/OurServices'
+      preLoaderRoute: typeof AceOurServicesRouteImport
+      parentRoute: typeof AceRoute
+    }
+    '/ace/Newsletters': {
+      id: '/ace/Newsletters'
+      path: '/Newsletters'
+      fullPath: '/ace/Newsletters'
+      preLoaderRoute: typeof AceNewslettersRouteImport
+      parentRoute: typeof AceRoute
+    }
+    '/ace/Calendar': {
+      id: '/ace/Calendar'
+      path: '/Calendar'
+      fullPath: '/ace/Calendar'
+      preLoaderRoute: typeof AceCalendarRouteImport
+      parentRoute: typeof AceRoute
+    }
   }
 }
 
+interface AceRouteChildren {
+  AceCalendarRoute: typeof AceCalendarRoute
+  AceNewslettersRoute: typeof AceNewslettersRoute
+  AceOurServicesRoute: typeof AceOurServicesRoute
+  AceOurTeamRoute: typeof AceOurTeamRoute
+  AceSocialMediaRoute: typeof AceSocialMediaRoute
+}
+
+const AceRouteChildren: AceRouteChildren = {
+  AceCalendarRoute: AceCalendarRoute,
+  AceNewslettersRoute: AceNewslettersRoute,
+  AceOurServicesRoute: AceOurServicesRoute,
+  AceOurTeamRoute: AceOurTeamRoute,
+  AceSocialMediaRoute: AceSocialMediaRoute,
+}
+
+const AceRouteWithChildren = AceRoute._addFileChildren(AceRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AceRoute: AceRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
